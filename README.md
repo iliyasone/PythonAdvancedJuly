@@ -1,1 +1,3 @@
 # PythonAdvancedJuly
+
+## План - крутой!
