@@ -11,10 +11,10 @@ async def soup():
     await asyncio.sleep(60*K)
     print("Едим суп!")
     
-async def tea():
-    print("Чайник на плите")
+async def tea(name: str):
+    print(f"Чайник {name} на плите")
     await asyncio.sleep(15*K)
-    print("Буль-буль, можно пить чай!")
+    print(f"Буль-буль, можно пить чай из чайника {name}!")
     
 async def sync_main():
     await loundary()
@@ -22,6 +22,6 @@ async def sync_main():
     await tea()
     
 async def async_main():
-    await asyncio.gather(loundary(), soup(), tea())
+    await asyncio.gather(loundary(), soup(), tea("Черный"), tea("Крутой"))
 
 asyncio.run(async_main())
