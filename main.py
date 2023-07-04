@@ -1,6 +1,7 @@
-import decorators
+from decorators import cache_decorator
 
-#@decorators.cache_decorator
+
+@cache_decorator
 def fib(n):
     if n <= 1:
         return n
