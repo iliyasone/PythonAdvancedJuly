@@ -8,9 +8,17 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 
-@decorators.time_measure_decorator
+#@decorators.time_measure_decorator
 def main():
-    print(f'{fib(30)=}')
+    fib(50)
+    
+    print(fib.cache)
+
+@decorators.cache_decorator
+def compute_square(x):
+    print("computing....")
+    return x*x
+
 
 if __name__ == '__main__':
     main()
