@@ -1,15 +1,16 @@
-print("program start")
+import decorators
+
+@decorators.cache_decorator
+def fib(n):
+    if n <= 1:
+        return n
+    else:
+        return fib(n-1) + fib(n-2)
 
 
-def choose_action(exp: int):
-    print("choose action call")
-    
-    def custom_power(x):
-        print("custom power call")
-        return x**exp
-    return custom_power
+@decorators.time_measure_decorator
+def main():
+    print(f'{fib(30)=}')
 
-super_function = choose_action(5)
-loh_function = choose_action(4)
-
-print(super_function.__closure__)
+if __name__ == '__main__':
+    main()
