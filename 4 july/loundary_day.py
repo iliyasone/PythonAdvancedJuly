@@ -22,6 +22,11 @@ async def sync_main():
     await tea()
     
 async def async_main():
-    await asyncio.gather(loundary(), soup(), tea("Черный"), tea("Крутой"))
+    await asyncio.gather(
+        loundary(), 
+        soup(), 
+        tea("Черный"), 
+        tea("Крутой")
+    )
 
 asyncio.run(async_main())
