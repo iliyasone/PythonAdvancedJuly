@@ -19,7 +19,7 @@ async def start_handler(message: types.Message, state: FSMContext):
 @dp.message_handler(state='name')
 async def name_asking(message: types.Message, state: FSMContext):
     name = message.text
-    state.update_data({"name" : name})
+    await state.update_data({"name" : name})
     await message.reply(f"Приятно познакомиться, {name}. Ты теперь в чате!")
     await state.set_state("g_chatting")
 
