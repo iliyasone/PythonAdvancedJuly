@@ -4,3 +4,4 @@ __pycache__
 venv
 .venv
 *.jpg
+hidden_chat_bot.py
