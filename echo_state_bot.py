@@ -8,6 +8,8 @@ from aiogram.dispatcher import FSMContext
 bot = Bot(TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
+active_users: set[int] = set()
+
 @dp.message_handler(commands=['start'], state='*')
 async def start_handler(message: types.Message, state: FSMContext):
     await message.answer("Привет, как тебя зовут?")
@@ -25,6 +27,10 @@ async def name_handler(message: types.Message, state: FSMContext):
     await state.update_data({"name" : name})
     await message.answer(f"{name}, добро пожаловать в эхо бота!")
     await state.set_state("echo")
+    
+    id = message.from_user.id
+    
+    await bot.send_message(chat_id=id, text=...)
     
     
 @dp.message_handler(state="echo")
