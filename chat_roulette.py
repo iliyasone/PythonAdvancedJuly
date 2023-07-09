@@ -3,18 +3,12 @@ from __future__ import annotations
 from config import TOKEN
 from aiogram import Bot, Dispatcher, executor, types
 
-from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, \
-                          InlineKeyboardButton, InlineKeyboardMarkup
 
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 
+from keyboards import choose_chat_type_keyboard, ReplyKeyboardMarkup
 
-b1 = KeyboardButton("чат 1 на 1")
-b2 = KeyboardButton("групповой чат")
-
-choose_chat_type_keyboard = ReplyKeyboardMarkup(
-    resize_keyboard=True).insert(b1).insert(b2)
 
 bot = Bot(TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
