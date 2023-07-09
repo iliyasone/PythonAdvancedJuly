@@ -3,8 +3,18 @@ from __future__ import annotations
 from config import TOKEN
 from aiogram import Bot, Dispatcher, executor, types
 
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, \
+                          InlineKeyboardButton, InlineKeyboardMarkup
+
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
+
+
+b1 = KeyboardButton("чат 1 на 1")
+b2 = KeyboardButton("групповой чат")
+
+choose_chat_type_keyboard = ReplyKeyboardMarkup(
+    resize_keyboard=True).insert(b1).insert(b2)
 
 bot = Bot(TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
@@ -21,7 +31,8 @@ async def start_handler(message: types.Message, state: FSMContext):
 async def name_handler(message: types.Message, state: FSMContext):
     name = message.text
     await state.update_data({'name' : name})
-    await message.reply(f'Приятно {name}! Жми /find чтобы начать общаться')    
+    await message.reply(f'Приятно познакомиться {name}! Как ты  хочешь общаться?',
+                        reply_markup=choose_chat_type_keyboard)    
     await state.set_state('ready')
     
 @dp.message_handler(commands='find', state='ready')
