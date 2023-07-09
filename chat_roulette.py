@@ -26,7 +26,10 @@ async def name_handler(message: types.Message, state: FSMContext):
     name = message.text
     await state.update_data({'name' : name})
     await message.reply(f'Приятно познакомиться {name}! Как ты  хочешь общаться?',
-                        reply_markup=choose_chat_type_keyboard)    
+                        reply_markup=choose_chat_type_keyboard) 
+    
+    msg: types.Message = await message.answer()
+    await msg.delete()
     await state.set_state('ready')
     
 @dp.message_handler(commands='find', state='ready')
