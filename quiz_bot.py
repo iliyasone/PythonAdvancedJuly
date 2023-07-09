@@ -48,10 +48,41 @@ async def start_button_handler(message: Message, state: FSMContext):
 @dp.message_handler(state=States.q1)
 async def q1_handler(message: Message, state: FSMContext):
     if message.text == keyboards.q1_b.text:
-        await message.answer("Правильно!")
+        await message.reply("Правильно!")
         data = await state.get_data()
         await state.update_data(score=data['score']+1)
     else:
-        await message.answer(f"Неправильно: правильный ответ {keyboards.q1_b.text}")
+        await message.reply(f"Неправильно: правильный ответ {keyboards.q1_b.text}")
+    await message.answer("Cколько лет Земле?",
+                        reply_markup=keyboards.q2_answers)
+    await state.set_state(States.q2)
+    
+@dp.message_handler(state=States.q2)
+async def q1_handler(message: Message, state: FSMContext):
+    if message.text == keyboards.q2_c.text:
+        await message.reply("Правильно!")
+        data = await state.get_data()
+        await state.update_data(score=data['score']+1)
+    else:
+        await message.reply(f"Неправильно: правильный ответ {keyboards.q2_c.text}")
+    await message.answer("Солнце является ...",
+                        reply_markup=keyboards.q3_answers)
+    await state.set_state(States.q3)
+    
 
+@dp.message_handler(state=States.q3)
+async def q1_handler(message: Message, state: FSMContext):
+    if message.text == keyboards.q3_b.text:
+        await message.reply("Правильно!", 
+                            reply_markup=types.ReplyKeyboardRemove())
+        data = await state.get_data()
+        await state.update_data(score=data['score']+1)
+    else:
+        await message.reply(f"Неправильно: правильный ответ {keyboards.q3_b.text}", 
+                            reply_markup=types.ReplyKeyboardRemove())
+        
+        
+    await message.answer(f"Вы закончили квиз. Ваш результат {(await state.get_data())['score']} и {3}")
+    
+    
 executor.start_polling(dp, skip_updates=True)
