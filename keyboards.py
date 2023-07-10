@@ -2,40 +2,11 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemo
                           InlineKeyboardButton, InlineKeyboardMarkup
 
 
-start_button = KeyboardButton("START")
 
-start_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,one_time_keyboard=False).add(start_button)
+button_108 = InlineKeyboardButton("108", callback_data='bus108')
+button_106 = InlineKeyboardButton("106", callback_data='bus106')
 
-q1_a = KeyboardButton("< 1k")
-q1_b = KeyboardButton("1k - 10k")
-q1_c = KeyboardButton("10k - 1kk")
-q1_d = KeyboardButton("> 1kk")
+busses_keyboard = InlineKeyboardMarkup().insert(button_106).insert(button_108)
 
-q1_answers = ReplyKeyboardMarkup(
-    resize_keyboard=True,
-    one_time_keyboard=True
-    ).insert(q1_a).insert(q1_b).add(q1_c).insert(q1_d)
-
-
-q2_a = KeyboardButton("2023")
-q2_b = KeyboardButton("8000")
-q2_c = KeyboardButton("6.5ккк")
-q2_d = KeyboardButton("Земли не существует")
-
-q2_answers = ReplyKeyboardMarkup(
-    resize_keyboard=True,
-    one_time_keyboard=True
-    ).insert(q2_a).insert(q2_b).add(q2_c).insert(q2_d)
-
-
-
-q3_a = KeyboardButton("Белым карликом")
-q3_b = KeyboardButton("Желтым карликом")
-q3_c = KeyboardButton("Солнца не сущесвует")
-q3_d = KeyboardButton("Красным гигантом")
-
-q3_answers = ReplyKeyboardMarkup(
-    resize_keyboard=True,
-    one_time_keyboard=True
-    ).insert(q3_a).insert(q3_b).add(q3_c).insert(q3_d)
-
+button_back = InlineKeyboardButton("Вернуться назад", callback_data='back')
+back_keyboard = InlineKeyboardMarkup().add(button_back)
