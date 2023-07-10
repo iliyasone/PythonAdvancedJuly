@@ -21,11 +21,10 @@ questions = [
             explanation='Планеты искать сложно'),
     Question(text = "Сколько лет Земле?",
             answers=["2023", "8000", "6.5ккк", "Земли не существует"],
-            rigth_answer_index=1),
+            rigth_answer_index=2),
     Question(text = "Солнце является ...",
             answers=["Белым карликом", "Желтым карликом", "Солнца не сущесвует", "Красным гигантом"],
             rigth_answer_index=1),
-
 ]
 
 
@@ -44,5 +43,5 @@ def main():
                 print(question.explanation)
         sleep(5)
         
-if __name__ != '__main__':
+if __name__ == '__main__':
     main()
