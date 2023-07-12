@@ -7,7 +7,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 
-from keyboards import choose_chat_type_keyboard, ReplyKeyboardMarkup
+#from keyboards import choose_chat_type_keyboard, ReplyKeyboardMarkup
 
 
 bot = Bot(TOKEN)
