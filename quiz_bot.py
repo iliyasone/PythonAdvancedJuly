@@ -90,4 +90,5 @@ async def handle_answer(message: Message, state: FSMContext):
     else:
         await ask_question(message, i+1)
 
-executor.start_polling(dp, skip_updates=True)
+input("Press ENTER to start")
+executor.start_polling(dp, skip_updates=False)
