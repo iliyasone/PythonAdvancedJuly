@@ -25,8 +25,8 @@ async def start_handler(message: types.Message, state: FSMContext):
 async def name_handler(message: types.Message, state: FSMContext):
     name = message.text
     await state.update_data({'name' : name})
-    await message.reply(f'Приятно познакомиться {name}! Как ты  хочешь общаться?',
-                        reply_markup=choose_chat_type_keyboard) 
+    await message.reply(f'Приятно познакомиться {name}! Как ты  хочешь общаться?'),
+                        #reply_markup=choose_chat_type_keyboard) 
     
     msg: types.Message = await message.answer()
     await msg.delete()
