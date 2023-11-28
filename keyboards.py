@@ -2,6 +2,10 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemo
                           InlineKeyboardButton, InlineKeyboardMarkup
 
 
+start_button = KeyboardButton("START")
+
+start_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,one_time_keyboard=False).add(start_button)
+
 
 button_108 = InlineKeyboardButton("108", callback_data='bus108')
 button_106 = InlineKeyboardButton("106", callback_data='bus106')
